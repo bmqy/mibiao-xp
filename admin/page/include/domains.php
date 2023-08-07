@@ -71,6 +71,17 @@ switch ($_REQUEST['do']) {
             echo 500;
         }
         break;
+    case "movedmains":
+        $domain_ids = $_REQUEST['domain_ids'];
+        $status = $_REQUEST['status'];
+        $result = updateMultipleDomains($domain_ids, $status);
+        if ($result) {
+            echo 200;
+        } else {
+            echo 500;
+        }
+
+        break;
 
 }
 
@@ -202,4 +213,31 @@ function getDomainById($domain_id)
     } else {
         return null; // 返回 null 表示没有找到匹配的记录
     }
+}
+
+
+//批量修改域名状态
+function updateMultipleDomains($domain_ids, $status) {
+    global $conn;
+
+    // 将传入的 domain_ids 字符串分割成数组
+    $domain_ids_array = explode(',', $domain_ids);
+
+    // 使用预处理语句
+    $placeholders = implode(',', array_fill(0, count($domain_ids_array), '?'));
+
+    // 生成类型定义字符串，其中一个是字符串 ("s")，其他都是整数 ("i")
+    $typeString = "s" . str_repeat("i", count($domain_ids_array));
+
+    $stmt = $conn->prepare("UPDATE mb_domains SET status = ? WHERE id IN ($placeholders)");
+
+    // 绑定参数并执行更新操作
+    $params = array_merge([$typeString, $status], $domain_ids_array);
+    $stmt->bind_param(...$params);
+    $result = $stmt->execute();
+
+    // 关闭预处理语句
+    $stmt->close();
+
+    return $result;
 }

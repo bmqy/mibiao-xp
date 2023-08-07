@@ -103,10 +103,10 @@ if (isset($_REQUEST['domain_id'])) {
 
 
     <div class="layui-form-item">
-        <label class="layui-form-label">选择框</label>
+        <label class="layui-form-label">状态</label>
         <div class="layui-input-block">
             <select name="status" lay-verify="required">
-                <option value="available" <?php if ($status == 'available') echo ' selected'; ?>>可用</option>
+                <option value="available" <?php if ($status == 'available') echo ' selected'; ?>>在售</option>
                 <option value="sold" <?php if ($status == 'sold') echo ' selected'; ?>>已售</option>
                 <option value="reserved" <?php if ($status == 'reserved') echo ' selected'; ?>>保留</option>
             </select>
@@ -179,6 +179,7 @@ if (isset($_REQUEST['domain_id'])) {
                 success: function (state) {
                     layer.msg(state == 200 ? "保存完成" : "新增失败,请检查配置", function () {
                         let index=parent.layer.getFrameIndex(window.name); //关闭当前窗口
+                        parent.location.reload();//刷新父页面，注意一定要在关闭当前iframe层之前执行刷新
                         parent.layer.close(index);
                     });
                 }

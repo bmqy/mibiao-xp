@@ -121,7 +121,8 @@ require_once("admin/functions.php");
       <div class="shopping-tips">
       <?=$info_3?>
   </div>
-  <div id="qrcode-box">
+
+  <div style="margin-top: 20px" id="qrcode-box">
 
   </div>
 <div class="clear"></div>

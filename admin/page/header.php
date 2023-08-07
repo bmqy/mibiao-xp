@@ -28,12 +28,9 @@ $admin_url=explode('/',$_SERVER['REQUEST_URI'])[1].'/page';
 
     <div class="layui-header">
         <div class="layui-logo">
-            咪表后台 <span class="layui-badge">1.0</span>
+            咪表后台 <span class="layui-badge">1.1</span>
         </div>
-        <ul class="layui-nav layui-layout-left">
-<!--            <li class="layui-nav-item"><a target="_blank" href="--><?php //=$ShipSayVersion['Site']?><!--"><i class="layui-icon layui-icon-home"></i> --><?php //=$ShipSayVersion['Site']?><!--</a></li>-->
-<!--            <li class="layui-nav-item"><a target="_blank" href="--><?php //=$ShipSayVersion['QQ']['url']?><!--">QQ群: --><?php //=$ShipSayVersion['QQ']['group']?><!--</a></li>-->
-            <li class="layui-nav-item"><a href="http://sen.ge/">反馈博客:<b class="layui-bg-red" style="padding:0 5px;margin-right:5px;">Sen.ge</b></a></li>
+        <ul class="layui-nav layui-layout-left"> <li class="layui-nav-item"><a href="http://sen.ge/">反馈博客:<b class="layui-bg-red" style="padding:0 5px;margin-right:5px;">Sen.ge</b></a></li>
         </ul>
 
         <ul class="layui-nav layui-layout-right">

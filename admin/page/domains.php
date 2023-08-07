@@ -20,6 +20,19 @@
         <table class="layui-hide" id="domainlist" lay-filter="domainlist"></table>
     </form>
 </div>
+
+
+<script type="text/html" id="buttonTpl">
+    {{#  if(d.status == 'available'){ }}
+    <button class="layui-btn layui-btn-xs">在售</button>
+    {{#  } if(d.status == 'sold') { }}
+    <button class="layui-btn layui-btn-primary layui-btn-xs">已售</button>
+    {{#  } if(d.status == 'reserved') { }}
+    <button class="layui-btn layui-btn-disabled layui-btn-xs">保留</button>
+
+    {{#  } }}
+</script>
+
 <?php require_once 'footer.php'; ?>
 </div> <!-- /header -->
 <!-- 控制部分 -->
@@ -32,6 +45,7 @@
     <!-- 表头模板 -->
     <div class="layui-btn-container">
         <button class="layui-btn layui-btn-sm" lay-event="delCheckData">删除选中</button>
+        <button class="layui-btn layui-btn-sm" lay-event="movekData">批量修改选中状态</button>
     </div>
 </script>
 
@@ -54,8 +68,6 @@
 
                             ids.push(value.id);
                         })
-                        console.log(ids);
-
                         $.ajax({
                             type: "POST",
                             url: "include/domains.php?do=deletelist",
@@ -69,6 +81,25 @@
                         table.reload('domainlist');
                     })
                     break;
+                case 'movekData':
+                    let ids = [];
+                    $.each(data, function(index, value) {
+                        ids.push(value.id);
+                    })
+                    layer.open({
+                        type: 2,
+                        title: '批量修改选中状态',
+                        area: ['50%', '60%'],
+                        content: 'include/tpl_changestatuslist.php?&domain_ids='+ ids,
+                        yes: function(index, layero){
+                            // 保存操作成功后，发送信号给父级页面
+                            window.parent.postMessage('saveSuccess', '*');
+                            // 关闭弹窗
+                            layer.close(index);
+                        }
+                    })
+                    break;
+
             }
         })
 
@@ -89,7 +120,7 @@
                     { field: 'platform', title: '所属平台', sort: true, width: '10%' }, // 设置宽度占比为 15%
                     { field: 'description', title: '简介', sort: true, width: '30%' }, // 设置宽度占比为 30%
                     { field: 'platform_url', title: '出售地址', sort: true, width: '10%' }, // 设置宽度占比为 15%
-                    { field: 'status', title: '状态', sort: true, width: '8%' }, // 设置宽度占比为 10%
+                    { field: 'status', title: '状态',templet: '#buttonTpl', align: 'center', sort: true, width: '8%' }, // 设置宽度占比为 10%
                     { field: 'order_number', title: '排序', sort: true, width: '5%' }, // 设置宽度占比为 10%
                     { field: 'created_at', title: '创建时间', sort: true, width: '20%' } // 设置宽度占比为 20%
                 ]
@@ -166,7 +197,7 @@
     $('.newdomain-btn').on('click', function() {
         layer.open({
             type: 2,
-            title: '新增小说',
+            title: '新增域名',
             area: ['50%', '60%'],
             content: 'include/domainedit.php?do=newdomain'
         })
@@ -180,5 +211,7 @@
         let form = layui.form;
         form.render();
     })
+
+
 </script>
 
