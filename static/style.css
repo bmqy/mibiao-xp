@@ -5,6 +5,7 @@
 
 body {
     font-family: MyFont, sans-serif;
+
 }
 
 .invoice {
@@ -47,12 +48,13 @@ body {
 .content table th {
     border-bottom: 2px dashed #000;
 }
+
 .content table th:last-child {
     padding: 0;
     border-bottom: 2px dashed #000;
 }
 
-table .item{
+table .item {
     text-align: center;
 }
 
@@ -71,7 +73,7 @@ table .item{
     position: relative;
 }
 
-.clear{
+.clear {
     clear: both;
 }
 
@@ -79,12 +81,12 @@ table .item{
 .store-info {
     display: inline-block;
     padding-right: 30px;
-    /* 可以添加其他样式，例如设置宽度、间距等 */
 }
+
 a {
-    text-decoration: none; /* 去除默认的下划线 */
-    outline: none;	/* 去除旧版浏览器的点击后的外虚线框 */
-    color: #000;	/* 去除默认的颜色和点击后变化的颜色 */
+    text-decoration: none;
+    outline: none;
+    color: #000;
 }
 
 
@@ -93,7 +95,8 @@ a {
     .invoice {
         border: none;
         width: 100%;
-        padding: 10px;
+        padding: 0;
+        margin: 0;
     }
 
     /* Adjust font size for mobile devices */
