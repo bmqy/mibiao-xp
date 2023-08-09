@@ -149,7 +149,15 @@ require_once("admin/functions.php");
 
   }
 
-  // Generate QR code when the page has fully loaded
+  //如果是手机访问，隐藏二维码
+    var userAgentInfo = navigator.userAgent;
+    var flag = true;
+    if (userAgentInfo.indexOf('Android') > 0 || userAgentInfo.indexOf('iPhone') > 0 || userAgentInfo.indexOf('iPad') > 0) {
+        flag = false;
+    }
+    if (!flag) {
+        document.getElementById('qrcode-box').style.display = 'none';
+    }
   window.onload = generateQRCode;
 </script>
 
