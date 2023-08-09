@@ -6,6 +6,10 @@
 后台地址：domain.com/admin  账号/密码admin123
 # 推荐环境
 Nginx 1.22.1 + PHP>7.4 + Mysql>5.6
+
+# 注意事项
+logo放在static/logo.png
+
 # 更新记录
 
 v1.1
