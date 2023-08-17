@@ -13,9 +13,10 @@ switch ($_REQUEST['do']) {
             $info_1 = $_POST['info_1'];
             $info_2 = $_POST['info_2'];
             $info_3 = $_POST['info_3'];
+            $tongji_code = $_POST['tongji_code'];
 
             // 调用更新数据的方法
-            $result = updateFormData($sitename, $logo, $favicon, $info_1, $info_2, $info_3);
+            $result = updateFormData($sitename, $logo, $favicon, $info_1, $info_2, $info_3, $tongji_code);
 
             echo $result; // 返回更新数据的结果
         }
@@ -25,7 +26,7 @@ switch ($_REQUEST['do']) {
 }
 
 // 更新数据到数据库
-function updateFormData($sitename, $logo, $favicon, $info_1, $info_2, $info_3) {
+function updateFormData($sitename, $logo, $favicon, $info_1, $info_2, $info_3, $tongji_code) {
     global $conn;
 
     // 使用预处理语句更新数据，防止 SQL 注入
@@ -56,6 +57,10 @@ function updateFormData($sitename, $logo, $favicon, $info_1, $info_2, $info_3) {
 
     $config_key = 'info_3';
     $config_value = $info_3;
+    $stmt->execute();
+
+    $config_key = 'tongji_code';
+    $config_value = $tongji_code;
     $stmt->execute();
 
     // 检查是否有错误

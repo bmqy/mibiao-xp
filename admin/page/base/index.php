@@ -37,6 +37,7 @@ require_once '../include/config.php';
                 "info_1": $("textarea[name='info_1']").val(),
                 "info_2": $("textarea[name='info_2']").val(),
                 "info_3": $("textarea[name='info_3']").val(),
+                "tongji_code": $("textarea[name='tongji_code']").val(),
             },
             async: true,
             success: function(state) {

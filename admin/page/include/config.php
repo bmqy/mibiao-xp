@@ -31,5 +31,5 @@ $mp_qrcode = getConfigValueByKey('mp_qrcode');
 $info_1 = getConfigValueByKey('info_1');
 $info_2 = getConfigValueByKey('info_2');
 $info_3 = getConfigValueByKey('info_3');
-
+$tongji_code = getConfigValueByKey('tongji_code');
 ?>

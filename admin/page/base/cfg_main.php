@@ -54,6 +54,10 @@
         </div>
     </div>
 
-
-
+    <div class="layui-form-item">
+        <label class="layui-form-label">百度统计</label>
+        <div class="layui-input-inline" style="width:400px;">
+            <textarea name="tongji_code" placeholder="百度统计xxx部分：https://hm.baidu.com/hm.js?XXXXXXXXXX" class="layui-textarea"><?=$tongji_code?></textarea>
+        </div>
+    </div>
 </form>
