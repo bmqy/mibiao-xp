@@ -25,6 +25,9 @@ function getConfigValueByKey($key) {
 }
 
 $webname = getConfigValueByKey('webname');
+$logo = getConfigValueByKey('logo');
+$favicon = getConfigValueByKey('favicon');
+$mp_qrcode = getConfigValueByKey('mp_qrcode');
 $info_1 = getConfigValueByKey('info_1');
 $info_2 = getConfigValueByKey('info_2');
 $info_3 = getConfigValueByKey('info_3');

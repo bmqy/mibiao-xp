@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
             <!-- 版权信息 -->
             <div class="copyright">
-                <a href="http://sen.ge/">&copy; Sen.ge</a>
+                <a href="https://www.bmqy.net/">&copy; bmqy.net</a>
             </div>
 
     </div>

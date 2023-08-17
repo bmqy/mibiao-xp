@@ -18,7 +18,7 @@ require_once '../include/config.php';
 </div>
 <div class="layui-footer">
     <button class="layui-btn save-btn-base">保存设置</button><span class="layui-word-aux">所有设置均为英文半角</span>
-    <span class="layui-layout-right layui-word-aux" style="margin-right: 10px;">&copy; Sen</span>
+    <span class="layui-layout-right layui-word-aux" style="margin-right: 10px;">&copy; Sen.ge、bmqy</span>
 </div>
 </div>
 
@@ -31,6 +31,9 @@ require_once '../include/config.php';
             data: {
                 "do": "base",
                 "sitename": $("input[name='sitename']").val(),
+                "logo": $("input[name='logo']").val(),
+                "favicon": $("input[name='favicon']").val(),
+                "mp_qrcode": $("textarea[name='mp_qrcode']").val(),
                 "info_1": $("textarea[name='info_1']").val(),
                 "info_2": $("textarea[name='info_2']").val(),
                 "info_3": $("textarea[name='info_3']").val(),

@@ -8,12 +8,14 @@ switch ($_REQUEST['do']) {
         // 假设表单数据已经提交，获取表单数据并更新数据库
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sitename = $_POST['sitename'];
+            $logo = $_POST['logo'];
+            $favicon = $_POST['favicon'];
             $info_1 = $_POST['info_1'];
             $info_2 = $_POST['info_2'];
             $info_3 = $_POST['info_3'];
 
             // 调用更新数据的方法
-            $result = updateFormData($sitename, $info_1, $info_2, $info_3);
+            $result = updateFormData($sitename, $logo, $favicon, $info_1, $info_2, $info_3);
 
             echo $result; // 返回更新数据的结果
         }
@@ -23,7 +25,7 @@ switch ($_REQUEST['do']) {
 }
 
 // 更新数据到数据库
-function updateFormData($sitename, $info_1, $info_2, $info_3) {
+function updateFormData($sitename, $logo, $favicon, $info_1, $info_2, $info_3) {
     global $conn;
 
     // 使用预处理语句更新数据，防止 SQL 注入
@@ -34,6 +36,14 @@ function updateFormData($sitename, $info_1, $info_2, $info_3) {
 
     $config_key = 'webname';
     $config_value = $sitename;
+    $stmt->execute();
+
+    $config_key = 'logo';
+    $config_value = $logo;
+    $stmt->execute();
+
+    $config_key = 'favicon';
+    $config_value = $favicon;
     $stmt->execute();
 
     $config_key = 'info_1';

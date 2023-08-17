@@ -4,11 +4,6 @@ if(session_status()!==PHP_SESSION_ACTIVE)session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: ../login.php");
     exit;
-}else{
-    if($_SESSION['username']!='admin123') {
-        header("Location: ../login.php");
-        exit;
-    }
 }
 $admin_url=explode('/',$_SERVER['REQUEST_URI'])[1].'/page';
 ?>
@@ -28,9 +23,15 @@ $admin_url=explode('/',$_SERVER['REQUEST_URI'])[1].'/page';
 
     <div class="layui-header">
         <div class="layui-logo">
-            咪表后台 <span class="layui-badge">1.1</span>
+            米表管理系统 <span class="layui-badge">1.0</span>
         </div>
-        <ul class="layui-nav layui-layout-left"> <li class="layui-nav-item"><a href="http://sen.ge/">反馈博客:<b class="layui-bg-red" style="padding:0 5px;margin-right:5px;">Sen.ge</b></a></li>
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item">
+                <a href="http://sen.ge/">源作：<b class="layui-bg-red" style="padding:0 5px;margin-right:5px;">Sen.ge</b></a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="https://www.bmqy.net/">魔改：bmqy</a>
+            </li>
         </ul>
 
         <ul class="layui-nav layui-layout-right">

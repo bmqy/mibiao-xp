@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'MyFont';
-    src: url('fonts/DinkieBitmapDemo-9px.ttf') format('truetype');
+    src: url('./fonts/DinkieBitmapDemo-9px.ttf') format('truetype');
 }
 
 body {
@@ -87,6 +87,19 @@ a {
     text-decoration: none;
     outline: none;
     color: #000;
+}
+
+.footer{
+    text-align: center;
+}
+.footer,
+.footer a{
+    color: #ccc;
+    font-size: 12px;
+}
+.footer a{
+    padding-bottom: 2px;
+    border-bottom: 1px dotted #e6e6e6;
 }
 
 
