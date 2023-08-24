@@ -24,19 +24,20 @@ jobs:
         with:
           target: '/admin/config/database.php'
 
-      - name: FTP Upload
-        uses: sand4rt/ftp-deployer@v1.7
-        with:
-          sftp: false
-          host: ${{ secrets.FTP_HOST }}
-          port: 21
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          remote_folder: ${{ secrets.FTP_REMOTE_FOLDER }}
-          local_folder: '/'
-          cleanup: false
-          passive: true
-          exclude: '[".gitignore","README.md","sql.sql",".github/**"]'
+      - name: 📂 Deploy Ftp
+          uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+          with:
+            server: ${{secrets.FTP_HOST}}
+            port: ${{secrets.FTP_PORT}}
+            username: ${{secrets.FTP_USERNAME}}
+            password: ${{ secrets.FTP_PASSWORD }}
+            local-dir: './'
+            server-dir: ${{secrets.FTP_REMOTE_FOLDER}}
+            exclude: |
+              .gitignore
+              README.md
+              sql.sql
+              .github/**
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
