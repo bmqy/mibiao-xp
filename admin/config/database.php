@@ -1,9 +1,9 @@
 <?php
 
-$servername = "{{DB_HOST}}";
-$username = "{{DB_USERNAME}}";
-$password = "{{DB_PASSWORD}}";
-$dbname = "{{DB_NAME}}";
+$servername = "${DB_HOST}";
+$username = "${DB_USERNAME}";
+$password = "${DB_PASSWORD}";
+$dbname = "${DB_NAME}";
 
 // 创建数据库连接
 $conn = new mysqli($servername, $username, $password, $dbname);
