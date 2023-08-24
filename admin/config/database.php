@@ -1,9 +1,9 @@
 <?php
 
-$servername = "127.0.0.1";
-$username = "mibiao";
-$password = "123456";
-$dbname = "mibiao";
+$servername = "{{DB_HOST}}";
+$username = "{{DB_USERNAME}}";
+$password = "{{DB_PASSWORD}}";
+$dbname = "{{DB_NAME}}";
 
 // 创建数据库连接
 $conn = new mysqli($servername, $username, $password, $dbname);
