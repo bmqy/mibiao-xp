@@ -22,7 +22,7 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_NAME: ${{ secrets.DB_NAME }}
         with:
-          filename: /admin/config/database.php
+          filename: ./admin/config/database.php
 
       - name: 📂 Deploy Ftp
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
