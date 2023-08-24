@@ -22,7 +22,7 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_NAME: ${{ secrets.DB_NAME }}
         with:
-          target: '/admin/config/database.php'
+          target: /admin/config/database.php
 
       - name: 📂 Deploy Ftp
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -34,10 +34,12 @@ jobs:
           local-dir: './'
           server-dir: ${{secrets.FTP_REMOTE_FOLDER}}
           exclude: |
+            .git/**
+            .github/**
             .gitignore
             README.md
             sql.sql
-            .github/**
+            .ftp-deploy-sync-state.json
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
