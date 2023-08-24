@@ -8,6 +8,18 @@
 - 后台配置统计代码
 - 增加robots.txt
 - 代售列表增加```title```小提示
+- 增加流水线自动部署到FTP
+
+# github actions 环境变量配置
+```DB_HOST``` 数据库地址  
+```DB_USERNAME``` 数据库账号  
+```DB_PASSWORD``` 数据库密码  
+```DB_NAME``` 数据库名  
+```FTP_HOST``` FTP地址  
+```FTP_PORT``` FTP端口  
+```FTP_USERNAME``` FTP账号  
+```FTP_PASSWORD``` FTP密码  
+```FTP_REMOTE_FOLDER``` FTP存储路径
 
 # 搭建方法
 - 将```sql```文件导入数据库后修改```admin\config\database.php```里面的信息

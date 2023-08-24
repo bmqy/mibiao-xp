@@ -40,7 +40,7 @@ jobs:
             .gitignore
             README.md
             sql.sql
-            *deploy-sync-state.json
+            *state.json
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
