@@ -1,10 +1,13 @@
 name: PHP Deploy
 
 on:
+  workflow_dispatch:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
 
 jobs:
   build:
@@ -36,4 +39,4 @@ jobs:
           local_folder: /
           cleanup: false
           passive: true
-          exclude: '['.gitignore', 'README.md', 'sql.sql', '.github/**']'
+          exclude: ['.gitignore','README.md','sql.sql','.github/**']
