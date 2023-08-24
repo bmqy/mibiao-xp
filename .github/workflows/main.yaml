@@ -35,5 +35,5 @@ jobs:
           remote_folder: ${{ secrets.FTP_REMOTE_FOLDER }}
           local_folder: /
           cleanup: false
-          exclude: ['.gitignore', 'README.md', 'sql.sql', '.github/**']
           passive: true
+          exclude: ['.gitignore', 'README.md', 'sql.sql', '.github/**']
