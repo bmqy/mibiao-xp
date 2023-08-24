@@ -1,13 +1,10 @@
 name: PHP Deploy
 
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - master
+    branches: [ "master" ]
   pull_request:
-    branches:
-      - master
+    branches: [ "master" ]
 
 jobs:
   build:
@@ -25,7 +22,7 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_NAME: ${{ secrets.DB_NAME }}
         with:
-          target: /admin/config/database.php
+          target: '/admin/config/database.php'
 
       - name: FTP Upload
         uses: sand4rt/ftp-deployer@v1.7
@@ -40,3 +37,9 @@ jobs:
           cleanup: false
           passive: true
           exclude: ['.gitignore','README.md','sql.sql','.github/**']
+
+    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
+    # Docs: https://getcomposer.org/doc/articles/scripts.md
+
+    # - name: Run test suite
+    #   run: composer run-script test
