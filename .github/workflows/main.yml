@@ -36,7 +36,7 @@ jobs:
           local_folder: '/'
           cleanup: false
           passive: true
-          exclude: ['.gitignore','README.md','sql.sql','.github/**']
+          exclude: '[".gitignore","README.md","sql.sql",".github/**"]'
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
