@@ -36,4 +36,4 @@ jobs:
           local_folder: /
           cleanup: false
           passive: true
-          exclude: ['.gitignore', 'README.md', 'sql.sql', '.github/**']
+          exclude: '['.gitignore', 'README.md', 'sql.sql', '.github/**']'
