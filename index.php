@@ -10,6 +10,7 @@ require_once("admin/functions.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="/static/style.css" media="all" />
     <link rel="icon" href="<?=empty($favicon) ? "/static/favicon.ico" : $favicon?>" type="image/x-icon" />
+    <?=$tongji_code?>
 </head>
 <body>
 <div class="invoice">
@@ -123,9 +124,6 @@ require_once("admin/functions.php");
 
 <div class="footer">
     <a href="https://github.com/bmqy/mibiao-xp">[米表]</a> 魔改自 <a href="https://github.com/Laogesix/xp_mb">@小票米表</a>
-</div>
-<div style="display: none;">
-    <?=$tongji_code?>
 </div>
 </body>
 </html>
