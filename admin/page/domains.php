@@ -120,6 +120,7 @@
                     { field: 'platform', title: '所属平台', sort: true, width: '10%' }, // 设置宽度占比为 15%
                     { field: 'description', title: '简介', sort: true, width: '30%' }, // 设置宽度占比为 30%
                     { field: 'platform_url', title: '出售地址', sort: true, width: '10%' }, // 设置宽度占比为 15%
+                    { field: 'visit_count', title: '访问量', sort: true, width: '5%' }, // 设置宽度占比为 10%
                     { field: 'status', title: '状态',templet: '#buttonTpl', align: 'center', sort: true, width: '8%' }, // 设置宽度占比为 10%
                     { field: 'order_number', title: '排序', sort: true, width: '5%' }, // 设置宽度占比为 10%
                     { field: 'created_at', title: '创建时间', sort: true, width: '20%' } // 设置宽度占比为 20%
@@ -182,6 +183,7 @@
                         { field: 'platform', title: '所属平台', sort: true, width: '10%' }, // 设置宽度占比为 15%
                         { field: 'description', title: '简介', sort: true, width: '30%' }, // 设置宽度占比为 30%
                         { field: 'platform_url', title: '出售地址', sort: true, width: '10%' }, // 设置宽度占比为 15%
+                        { field: 'visit_count', title: '访问量', sort: true, width: '5%' }, // 设置宽度占比为 10%
                         { field: 'status', title: '状态', sort: true, width: '8%' }, // 设置宽度占比为 10%
                         { field: 'order_number', title: '排序', sort: true, width: '5%' }, // 设置宽度占比为 10%
                         { field: 'created_at', title: '创建时间', sort: true, width: '20%' } // 设置宽度占比为 20%

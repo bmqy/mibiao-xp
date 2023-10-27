@@ -34,6 +34,7 @@ require_once("admin/functions.php");
                   <th>域名</th>
                   <th>备注</th>
                   <th>平台</th>
+                  <th>访问</th>
                   <th>价格</th>
               </tr>
               <?php foreach ($available_domains as $domain): ?>
@@ -41,7 +42,7 @@ require_once("admin/functions.php");
                       <td><?php echo $domain['domain_name']; ?></td>
                       <td><?php echo $domain['description']; ?></td>
                       <td><?php echo $domain['platform']; ?></td>
-
+                      <td><?php echo $domain['visit_count']; ?></td>
                       <td> <a href="<?php echo $domain['platform_url']; ?>">￥<?php echo $domain['price']; ?></a></td>
 
                   </tr>

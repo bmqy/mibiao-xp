@@ -4,53 +4,44 @@ require_once("config/database.php");
 
 function getDomainsByStatus($status) {
     global $conn;
-
     // 使用预处理语句查询数据，防止 SQL 注入
     $stmt = $conn->prepare("SELECT * FROM mb_domains WHERE status = ? ORDER BY order_number desc ");
     $stmt->bind_param("s", $status);
-
     // 执行查询
     $stmt->execute();
-
     // 获取查询结果
     $result = $stmt->get_result();
-
     // 将结果转换为关联数组
     $domains = $result->fetch_all(MYSQLI_ASSOC);
-
     // 关闭查询
     $stmt->close();
-
     return $domains;
 }
 
-
 function calculateTotalPrice($status) {
     global $conn;
-
     // 使用预处理语句查询数据，防止 SQL 注入
     $stmt = $conn->prepare("SELECT SUM(price) as total_price FROM mb_domains WHERE status = ?");
     $stmt->bind_param("s", $status);
-
     // 执行查询
     $stmt->execute();
-
     // 获取查询结果
     $result = $stmt->get_result();
-
     // 将结果转换为关联数组
     $totalPrice = $result->fetch_assoc()['total_price'];
-
     // 关闭查询
     $stmt->close();
-
     return $totalPrice;
 }
 
-
-
-
-
+function updateDomainVisitCount($domain) {
+    global $conn;
+    // 使用预处理语句查询数据，防止 SQL 注入
+    $stmt = $conn->prepare("UPDATE mb_domains SET visit_count=visit_count+1 WHERE domain_name=?");
+    $stmt->bind_param("s", $domain);
+    // 执行
+    $stmt->execute();
+}
 
 // 查询状态为"available"的域名，并按order_number排序
 $available_domains = getDomainsByStatus("available");
@@ -87,4 +78,9 @@ $info_1 = getConfigValueByKey('info_1');
 $info_2 = getConfigValueByKey('info_2');
 $info_3 = getConfigValueByKey('info_3');
 $tongji_code = getConfigValueByKey('tongji_code');
+
+$referrer = $_REQUEST['referrer'];
+if(isset($referrer)){
+    updateDomainVisitCount($referrer);
+}
 ?>

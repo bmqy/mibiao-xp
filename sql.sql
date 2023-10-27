@@ -46,6 +46,7 @@ CREATE TABLE `mb_domains` (
   `platform_url` varchar(255) DEFAULT NULL COMMENT '售卖平台URL',
   `status` enum('available','sold','reserved') NOT NULL,
   `comment` varchar(255) DEFAULT NULL COMMENT '备注',
+  `visit_count` int(11) DEFAULT NULL COMMENT '访问量',
   `order_number` int(11) DEFAULT NULL COMMENT '排序号',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
@@ -58,7 +59,7 @@ CREATE TABLE `mb_domains` (
 
 LOCK TABLES `mb_domains` WRITE;
 /*!40000 ALTER TABLE `mb_domains` DISABLE KEYS */;
-INSERT INTO `mb_domains` VALUES (1,'bt.td',999.00,'af','对称米，变态土豆',NULL,'available',NULL,1,'2023-08-01 08:22:20'),(2,'qq.com',888.00,'腾讯云','腾讯qq','','sold',NULL,1,'2023-08-01 22:57:29'),(51,'too.lu',888.00,'趣域','tool，工具','https://www.quyu.net/','available',NULL,0,'2023-08-02 07:38:29'),(52,'sen.ge',0.00,'趣域','森哥','','reserved',NULL,0,'2023-08-02 07:40:43'),(53,'diaosi.cc',300.00,'西数','屌丝','https://www.west.cn/sale/95854086.html','available',NULL,0,'2023-08-02 07:46:37'),(54,'hostel.top',5000.00,'西数','招待所、旅店、青旅','https://www.west.cn/services/paimai/show.asp?pid=94647972','available',NULL,0,'2023-08-02 07:54:03'),(55,'amd.pw',3000.00,'西数','AMD 爱民贷 按摩店 阿曼达','https://www.west.cn/services/paimai/show.asp?pid=94567761','available',NULL,0,'2023-08-02 07:56:46');
+INSERT INTO `mb_domains` VALUES (1,'bt.td',999.00,'af','对称米，变态土豆',NULL,'available',NULL,1,'2023-08-01 08:22:20'),(2,'qq.com',888.00,'腾讯云','腾讯qq','','sold',NULL,1,'2023-08-01 22:57:29'),(51,'too.lu',888.00,'趣域','tool，工具','https://www.quyu.net/','available',NULL,0,'2023-08-02 07:38:29'),(52,'sen.ge',0.00,'趣域','森哥','','reserved',NULL,0,'2023-08-02 07:40:43'),(53,'diaosi.cc',300.00,'西数','屌丝','https://www.west.cn/sale/95854086.html','available',NULL,0,'2023-08-02 07:46:37'),(54,'hostel.top',5000.00,'西数','招待所、旅店、青旅','https://www.west.cn/services/paimai/show.asp?pid=94647972','available',NULL,0,0,'2023-08-02 07:54:03'),(55,'amd.pw',3000.00,'西数','AMD 爱民贷 按摩店 阿曼达','https://www.west.cn/services/paimai/show.asp?pid=94567761','available',NULL,0,0,'2023-08-02 07:56:46');
 /*!40000 ALTER TABLE `mb_domains` ENABLE KEYS */;
 UNLOCK TABLES;
 

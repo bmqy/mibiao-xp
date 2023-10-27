@@ -10,6 +10,7 @@ $price = 0.00;
 $platform = "";
 $description = "";
 $platform_url = "";
+$visit_count = 0;
 $status = "";
 $order_number = 0;
 
@@ -33,6 +34,7 @@ if (isset($_REQUEST['domain_id'])) {
         $platform = $row['platform'];
         $description = $row['description'];
         $platform_url = $row['platform_url'];
+        $visit_count = $row['visit_count'];
         $status = $row['status'];
         $order_number = $row['order_number'];
     }
@@ -101,6 +103,14 @@ if (isset($_REQUEST['domain_id'])) {
         <div class="layui-form-mid layui-word-aux">越大越靠前</div>
     </div>
 
+    <div class="layui-form-item" style="margin-right:15px">
+        <label class="layui-form-label">访问量</label>
+        <div class="layui-input-inline">
+            <input type="number" name="visit_count" value="<?= $visit_count ?>" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+
 
     <div class="layui-form-item">
         <label class="layui-form-label">状态</label>
@@ -144,6 +154,7 @@ if (isset($_REQUEST['domain_id'])) {
                     "price": $('input[name="price"]').val() || '',
                     "platform": $('input[name="platform"]').val() || '',
                     "platform_url": $('input[name="platform_url"]').val() || '',
+                    "visit_count": $('input[name="visit_count"]').val() || '',
                     "order_number": $('input[name="order_number"]').val() || '',
                     "status": $('select[name="status"]').val() || '',
                     "description": $('textarea[name="description"]').val() || ''
@@ -171,13 +182,14 @@ if (isset($_REQUEST['domain_id'])) {
                     "price": $('input[name="price"]').val() || '',
                     "platform": $('input[name="platform"]').val() || '',
                     "platform_url": $('input[name="platform_url"]').val() || '',
+                    "visit_count": $('input[name="visit_count"]').val() || '',
                     "order_number": $('input[name="order_number"]').val() || '',
                     "status": $('select[name="status"]').val() || '',
                     "description": $('textarea[name="description"]').val() || ''
                 },
                 async: true,
                 success: function (state) {
-                    layer.msg(state == 200 ? "保存完成" : "新增失败,请检查配置", function () {
+                    layer.msg(state == 200 ? "保存完成" : "更新失败,请检查配置", function () {
                         let index=parent.layer.getFrameIndex(window.name); //关闭当前窗口
                         parent.location.reload();//刷新父页面，注意一定要在关闭当前iframe层之前执行刷新
                         parent.layer.close(index);

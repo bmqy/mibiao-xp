@@ -28,9 +28,10 @@ switch ($_REQUEST['do']) {
         $platform = $_REQUEST['platform'];
         $description = $_REQUEST['description'];
         $platform_url = $_REQUEST['platform_url'];
+        $visit_count = $_REQUEST['visit_count'];
         $status = $_REQUEST['status'];
         $order_number = $_REQUEST['order_number'];
-        $result = addDomain($domain_name, $price, $platform, $description, $platform_url, $status, $order_number);
+        $result = addDomain($domain_name, $price, $platform, $description, $platform_url, $visit_count, $status, $order_number);
         if ($result) {
             echo 200;
         } else {
@@ -44,9 +45,10 @@ switch ($_REQUEST['do']) {
         $platform = $_REQUEST['platform'];
         $description = $_REQUEST['description'];
         $platform_url = $_REQUEST['platform_url'];
+        $visit_count = $_REQUEST['visit_count'];
         $status = $_REQUEST['status'];
         $order_number = $_REQUEST['order_number'];
-        $result = updateDomain($domain_id, $domain_name, $price, $platform, $description, $platform_url, $status, $order_number);
+        $result = updateDomain($domain_id, $domain_name, $price, $platform, $description, $platform_url, $visit_count, $status, $order_number);
         if ($result) {
             echo 200;
         } else {
@@ -136,22 +138,22 @@ function getAllDomains($search = null, $page = 1, $limit = 10)
 
 
 // 添加域名
-function addDomain($domain_name, $price, $platform, $description, $platform_url, $status, $order_number)
+function addDomain($domain_name, $price, $platform, $description, $platform_url, $visit_count, $status, $order_number)
 {
     global $conn;
-    $sql = "INSERT INTO mb_domains (domain_name, price, platform, description, platform_url, status,order_number)
-            VALUES ('$domain_name', $price, '$platform', '$description', '$platform_url', '$status', $order_number)";
+    $sql = "INSERT INTO mb_domains (domain_name, price, platform, description, platform_url, visit_count, status,order_number)
+            VALUES ('$domain_name', $price, '$platform', '$description', '$platform_url', '$visit_count', '$status', $order_number)";
     return $conn->query($sql);
 }
 
 // 更新域名
-function updateDomain($domain_id, $domain_name, $price, $platform, $description, $platform_url, $status, $order_number)
+function updateDomain($domain_id, $domain_name, $price, $platform, $description, $platform_url, $visit_count, $status, $order_number)
 {
     global $conn;
 
     // 使用预处理语句更新数据，避免 SQL 注入
-    $stmt = $conn->prepare("UPDATE mb_domains SET domain_name=?, price=?, platform=?, description=?, platform_url=?, status=?, order_number=? WHERE id=?");
-    $stmt->bind_param("sdssssii", $domain_name, $price, $platform, $description, $platform_url, $status, $order_number, $domain_id);
+    $stmt = $conn->prepare("UPDATE mb_domains SET domain_name=?, price=?, platform=?, description=?, platform_url=?, visit_count=?, status=?, order_number=? WHERE id=?");
+    $stmt->bind_param("sdsssisii", $domain_name, $price, $platform, $description, $platform_url, $visit_count, $status, $order_number, $domain_id);
 
     // 执行预处理语句
     $result = $stmt->execute();
