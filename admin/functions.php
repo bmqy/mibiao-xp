@@ -41,6 +41,8 @@ function updateDomainVisitCount($domain) {
     $stmt->bind_param("s", $domain);
     // 执行
     $stmt->execute();
+
+    return true; // 返回 true 表示更新数据成功
 }
 
 // 查询状态为"available"的域名，并按order_number排序
