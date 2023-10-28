@@ -41,6 +41,8 @@ function updateDomainVisitCount($domain) {
     $stmt->bind_param("s", $domain);
     // 执行
     $stmt->execute();
+    // 关闭查询
+    $stmt->close();
 
     return true; // 返回 true 表示更新数据成功
 }
