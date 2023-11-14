@@ -126,5 +126,10 @@ require_once("admin/functions.php");
 <div class="footer">
     <a href="https://github.com/bmqy/mibiao-xp">[米表]</a> 魔改自 <a href="https://github.com/Laogesix/xp_mb">@小票米表</a>
 </div>
+</div>
+
+<div class="cps-info">
+    ${CPS_INFO}
+</div>
 </body>
 </html>

@@ -10,6 +10,7 @@
 - 代售列表增加```title```小提示
 - 增加流水线自动部署到```FTP```
 - 增加域名访问量显示
+- 增加空间服务商信息
 
 # github actions 环境变量配置
 ```DB_HOST``` 数据库地址  
@@ -20,7 +21,8 @@
 ```FTP_PORT``` FTP端口  
 ```FTP_USERNAME``` FTP账号  
 ```FTP_PASSWORD``` FTP密码  
-```FTP_REMOTE_FOLDER``` FTP存储路径
+```FTP_REMOTE_FOLDER``` FTP存储路径  
+```CPS_INFO``` 空间服务商
 
 # 搭建方法
 - 将```sql```文件导入数据库后修改```admin\config\database.php```里面的信息
