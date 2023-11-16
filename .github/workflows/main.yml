@@ -25,16 +25,27 @@ jobs:
           input: ./admin/config/database.php
           output: ./admin/config/
 
-      - name: 📂 Deploy Ftp
-        uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
+      - uses: actions/checkout@v3
+      - name: Set up Python3.9
+        uses: actions/setup-python@v3
         with:
-          ftp_host: ${{ secrets.FTP_HOST }}
-          ftp_username: ${{ secrets.FTP_USERNAME }}
-          ftp_password: ${{ secrets.FTP_PASSWORD }}
-          local_source_dir: "./"
-          dist_target_dir: ${{secrets.FTP_REMOTE_FOLDER}}
-          delete: "false"
-          exclude: "'.git/**' '.github/**' '.gitignore' 'README.md' 'sql.sql' '.*state.json'"
+          python-version: '3.9'
+          architecture: 'x64'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyftpsync==4.0.0a3
+      - name: FTP Deploy
+        uses: lujiaying/FTP-Deploy-Action-Py3.9@v1.0
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          user: ${{ secrets.FTP_USERNAME }}
+          passwd: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          local_dir: ./
+          remote_dir: ${{secrets.FTP_REMOTE_FOLDER}}
+          exclude: .git/**,.github/**,.gitignore,README.md,sql.sql,*state.json
+          dry_run: False
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
