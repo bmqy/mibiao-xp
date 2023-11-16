@@ -34,7 +34,7 @@ jobs:
           local_source_dir: "./"
           dist_target_dir: ${{secrets.FTP_REMOTE_FOLDER}}
           delete: "false"
-          exclude: "'.git/**' '.github/**' '.gitignore' 'README.md' 'sql.sql' '*state.json'"
+          exclude: "'.git/**' '.github/**' '.gitignore' 'README.md' 'sql.sql' '.*state.json'"
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
