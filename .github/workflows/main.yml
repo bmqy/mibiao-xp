@@ -26,22 +26,15 @@ jobs:
           output: ./admin/config/
 
       - name: 📂 Deploy Ftp
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
         with:
-          server: ${{secrets.FTP_HOST}}
-          port: ${{secrets.FTP_PORT}}
-          username: ${{secrets.FTP_USERNAME}}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: './'
-          server-dir: ${{secrets.FTP_REMOTE_FOLDER}}
-          timeout: 60000
-          exclude: |
-            .git/**
-            .github/**
-            .gitignore
-            README.md
-            sql.sql
-            *state.json
+          ftp_host: ${{ secrets.FTP_HOST }}
+          ftp_username: ${{ secrets.FTP_USERNAME }}
+          ftp_password: ${{ secrets.FTP_PASSWORD }}
+          local_source_dir: "./"
+          dist_target_dir: ${{secrets.FTP_REMOTE_FOLDER}}
+          delete: "false"
+          exclude: "'.git/**' '.github/**' '.gitignore' 'README.md' 'sql.sql' '*state.json'"
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
