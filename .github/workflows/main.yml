@@ -34,6 +34,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: './'
           server-dir: ${{secrets.FTP_REMOTE_FOLDER}}
+          timeout: 60000
           exclude: |
             .git/**
             .github/**
