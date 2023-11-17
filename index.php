@@ -48,10 +48,10 @@ require_once("admin/functions.php");
                   </tr>
               <?php endforeach; ?>
               <tr>
-                  <th colspan="4"></th>
+                  <th colspan="5"></th>
               </tr>
               <tr class="item">
-                  <td colspan="3" style="text-align: right;"><strong>总价：</strong></td>
+                  <td colspan="4" style="text-align: right;"><strong>总价：</strong></td>
                   <td><strong>￥<?=$available_domains_total_price?></strong></td>
               </tr>
           </table>
