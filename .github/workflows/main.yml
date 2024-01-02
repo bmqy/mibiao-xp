@@ -25,20 +25,20 @@ jobs:
           input: ./admin/config/database.php
           output: ./admin/config/
 
-      - name: 📂 Deploy Ftp
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{secrets.FTP_HOST}}
-          port: ${{secrets.FTP_PORT}}
-          protocol: ${{secrets.FTP_PROTOCOL}}
-          username: ${{secrets.FTP_USERNAME}}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: './'
-          server-dir: ${{secrets.FTP_REMOTE_FOLDER}}
-          exclude: |
-            .git/**
-            .github/**
-            .gitignore
-            README.md
-            sql.sql
-            *state.json
+      - name: "Deploy FTP"
+          uses: milanmk/actions-file-deployer@master
+          with:
+            remote-host: ${{secrets.FTP_HOST}}
+            remote-port: ${{secrets.FTP_PORT}}
+            remote-protocol: ${{secrets.FTP_PROTOCOL}}
+            remote-user: ${{secrets.FTP_USERNAME}}
+            remote-password: ${{ secrets.FTP_PASSWORD }}
+            local-path: './'
+            remote-path: ${{secrets.FTP_REMOTE_FOLDER}}
+            sync-delta-excludes: |
+              .git/**
+              .github/**
+              .gitignore
+              README.md
+              sql.sql
+              *state.json
