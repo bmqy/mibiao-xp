@@ -26,19 +26,19 @@ jobs:
           output: ./admin/config/
 
       - name: "Deploy FTP"
-          uses: milanmk/actions-file-deployer@master
-          with:
-            remote-host: ${{secrets.FTP_HOST}}
-            remote-port: ${{secrets.FTP_PORT}}
-            remote-protocol: ${{secrets.FTP_PROTOCOL}}
-            remote-user: ${{secrets.FTP_USERNAME}}
-            remote-password: ${{ secrets.FTP_PASSWORD }}
-            local-path: './'
-            remote-path: ${{secrets.FTP_REMOTE_FOLDER}}
-            sync-delta-excludes: |
-              .git/**
-              .github/**
-              .gitignore
-              README.md
-              sql.sql
-              *state.json
+        uses: milanmk/actions-file-deployer@master
+        with:
+          remote-host: ${{secrets.FTP_HOST}}
+          remote-port: ${{secrets.FTP_PORT}}
+          remote-protocol: ${{secrets.FTP_PROTOCOL}}
+          remote-user: ${{secrets.FTP_USERNAME}}
+          remote-password: ${{ secrets.FTP_PASSWORD }}
+          local-path: './'
+          remote-path: ${{secrets.FTP_REMOTE_FOLDER}}
+          sync-delta-excludes: |
+            .git/**
+            .github/**
+            .gitignore
+            README.md
+            sql.sql
+            *state.json
