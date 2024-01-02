@@ -30,6 +30,7 @@ jobs:
         with:
           server: ${{secrets.FTP_HOST}}
           port: ${{secrets.FTP_PORT}}
+          protocol: ${{secrets.FTP_PROTOCOL}}
           username: ${{secrets.FTP_USERNAME}}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: './'
