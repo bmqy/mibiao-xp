@@ -24,24 +24,17 @@ jobs:
           input: ./admin/config/database.php
           output: ./admin/config/
 
-      - name: "Checkout"
-        uses: actions/checkout@v3
+      - name: FTP Deployer
+        uses: sand4rt/ftp-deployer@v1.7
         with:
-          fetch-depth: 0
-      - name: "Deploy FTP"
-        uses: milanmk/actions-file-deployer@master
-        with:
-          remote-host: ${{secrets.FTP_HOST}}
-          remote-port: ${{secrets.FTP_PORT}}
-          remote-protocol: ${{secrets.FTP_PROTOCOL}}
-          remote-user: ${{secrets.FTP_USERNAME}}
-          remote-password: ${{ secrets.FTP_PASSWORD }}
-          local-path: './'
-          remote-path: ${{secrets.FTP_REMOTE_FOLDER}}
-          sync-delta-excludes: |
-            .git/**
-            .github/**
-            .gitignore
-            README.md
-            sql.sql
-            *state.json
+          sftp: ${{secrets.FTP_PROTOCOL}} # optional
+          host: ${{secrets.FTP_HOST}} # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
+          port: ${{secrets.FTP_PORT}} # optional, default is: 21
+          username: ${{secrets.FTP_USERNAME}} # FTP username
+          password: ${{ secrets.FTP_PASSWORD }} # FTP password
+          remote_folder: ${{secrets.FTP_REMOTE_FOLDER}} # optional, remote path of your FTP server
+          local_folder: './' # optional, local path, default is: dist
+          cleanup: false # optional, remove existing files inside FTP remote folder
+          include: '[]' # optional, e.g. '['dist']'
+          exclude: '['.git/**','.github/**','.gitignore','README.md','sql.sql','*state.json']' # optional, e.g. '['node_modules/**', '.git/**', '*.env']'
+          passive: true # optional
