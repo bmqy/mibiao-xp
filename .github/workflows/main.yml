@@ -31,8 +31,6 @@ jobs:
           username: ${{secrets.FTP_USERNAME}}
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
-          compress: true                             # Compression
-          forceUpload: true                          # Optional, Force uploading all files, Default to false(upload only newer files).
           localDir: './'                              # Required, Absolute or relative to cwd.
           remoteDir: ${{secrets.FTP_REMOTE_FOLDER}}    # Required, Absolute path only.
           exclude: '.git/**,.github/**,.gitignore,README.md,sql.sql,*state.json'
