@@ -13,9 +13,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
       - name: Env Replacer
         uses: NicoG60/simple-template-renderer@v1
         env:
@@ -27,6 +24,10 @@ jobs:
           input: ./admin/config/database.php
           output: ./admin/config/
 
+      - name: "Checkout"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: "Deploy FTP"
         uses: milanmk/actions-file-deployer@master
         with:
