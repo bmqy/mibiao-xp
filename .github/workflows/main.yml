@@ -24,17 +24,15 @@ jobs:
           input: ./admin/config/database.php
           output: ./admin/config/
 
-      - name: FTP Deployer
-        uses: sand4rt/ftp-deployer@v1.7
+      - name: 📂 SFTP uploader                       # Upload to SFTP
+        uses: wangyucode/sftp-upload-action@v2.0.2
         with:
-          sftp: ${{secrets.FTP_PROTOCOL}}
-          host: ${{secrets.FTP_HOST}}
-          port: ${{secrets.FTP_PORT}}
+          host: ${{secrets.FTP_HOST}}              # Recommended to put the credentials in github secrets.
           username: ${{secrets.FTP_USERNAME}}
           password: ${{ secrets.FTP_PASSWORD }}
-          remote_folder: ${{secrets.FTP_REMOTE_FOLDER}}
-          local_folder: './'
-          cleanup: false
-          include: []
-          exclude: ['.git/**','.github/**','.gitignore','README.md','sql.sql','*state.json']
-          passive: true
+          port: ${{ secrets.FTP_PORT }}
+          compress: true                             # Compression
+          forceUpload: true                          # Optional, Force uploading all files, Default to false(upload only newer files).
+          localDir: './'                              # Required, Absolute or relative to cwd.
+          remoteDir: ${{secrets.FTP_REMOTE_FOLDER}}    # Required, Absolute path only.
+          exclude: '.git/**,.github/**,.gitignore,README.md,sql.sql,*state.json'
